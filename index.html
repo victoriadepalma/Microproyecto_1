@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>UNIMEMORY</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+   
+
+
+        <div class="header">
+            <div class="header-container">
+              <h1 class="title">UNIMEMORY</h1>
+              <h3 class="question">Do you have what it takes?</h3>
+              <div class="puntaje">PUNTAJE: <span>0</span></div>
+            </div>
+          </div>
+
+        <!-- <div class="controls-container">
+            <p id="result"></p>
+            <button id="start">Start Game</button>
+          </div> -->
+
+          <button id="start" class="hide">START GAME</button>
+   
+          <div class="timer-container">
+            <div id="timer" class="timer">00:00</div>
+          </div>
+
+    <div class="wrapper">
+
+        <div class="stats-container">
+        <div id="moves-count"></div>
+        <div id="time"></div>
+          <div>
+          <div class="game-container"></div>
+          
+          </div>
+
+      <ul class="cards">
+        <li class="card">
+          <div class="view front-view" data-index="1">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/1.jpg"alt="card">
+            </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="1">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/1.jpg" alt="card-img">
+          </div>
+        </li>
+
+
+        <li class="card">
+          <div class="view front-view" data-index="2">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/2.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="2">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/2.jpg" alt="card-img">
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="view front-view" data-index="3">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/3.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="3">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/3.jpg" alt="card-img">
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="view front-view" data-index="4">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/4.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="4">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/4.jpg" alt="card-img">
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="view front-view" data-index="5">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/5.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="5">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/5.jpg" alt="card-img">
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="view front-view" data-index="6">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/6.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="6">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/6.jpg" alt="card-img">
+          </div>
+        </li>
+
+        <li class="card" data-index="7">
+          <div class="view front-view">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/7.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="7">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/7.jpg" alt="card-img">
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="view front-view" data-index="8">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/8.jpg" alt="card-img">
+          </div>
+        </li>
+        <li class="card">
+          <div class="view front-view" data-index="8">
+            <img src="Imagenes/logo2.png" alt="icon">
+          </div>
+          <div class="view back-view">
+            <img src="Imagenes/8.jpg" alt="card-img">
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+
+  </body>
+</html>
