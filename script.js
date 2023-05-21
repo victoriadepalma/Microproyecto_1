@@ -7,7 +7,7 @@ let isPlaying = false;
 let username = "";
 
 const timeLimit = 180;
-
+const leaderboardUsersTable=document.getElementById('leaderboard')
 const timerElement = document.getElementById('timer');
 let timeLeft = timeLimit;
 
@@ -67,7 +67,7 @@ function startGame() {
 
 
   startButton.addEventListener('click', () => {
-    console.log('kmjhgfdxcgvhbjnk')
+
     startButton.classList.add('clicked');
     // Set up the game state
     shuffleCard();
@@ -203,34 +203,14 @@ function resetScoreAndTime() {
     time = 180; // set the time to 180 seconds (3 minutes)
     // Update the score and time displays on the page
     document.getElementById("punto").textContent = score;
-    document.getElementById("timer").textContent = formatTime(time);
+  
 
     //newnew
     
      // Reset the score display
      document.getElementById("punto").textContent = "0";
   
-     // Reset the timer display
-     const minutes = Math.floor(timeLeft / 60);
-     const seconds = timeLeft % 60;
-     timerElement.innerHTML = `${minutes}:${
-       seconds < 10 ? "0" : ""
-     }${seconds}`;
- 
-     // Start the timer
-     timer = setInterval(() => {
-       if (timeLeft <= 0) {
-         clearInterval(timer);
-         // Code to end the game when time is up
-       } else {
-         const minutes = Math.floor(timeLeft / 60);
-         const seconds = timeLeft % 60;
-         timerElement.innerHTML = `${minutes}:${
-           seconds < 10 ? "0" : ""
-     }${seconds}`;
-         timeLeft--;
-       }
-     }, 1000);
+   
   }
 
 
@@ -241,30 +221,44 @@ function resetScoreAndTime() {
     // Reset the score and time variables
     resetScoreAndTime();
     // Shuffle the cards and reset their state
-    shuffle(cards);
-    resetCards();
+    // shuffleCard();
+    // resetCards();
     // Hide the start game button
     document.getElementById("start").classList.add("hide");
     
   
-    // Set the time limit and update the timer display
-    time = timeLimit;
-    document.getElementById("timer").textContent = formatTime(time);
+
+      timeLeft = timeLimit; // Reset the time left to the time limit
   
-    // Start the timer interval
-    timerIntervalId = setInterval(function() {
-      time--;
-      document.getElementById("timer").textContent = formatTime(time);
-      if (time === 0) {
-        // End the game if the time is up
-        endGame();
-      }
-    }, 1000);
+
+  
+
+  
+      // // Start the timer
+      // console.log('mkcdmkmcmdkmcdk',timeLimit)
+      // timer = setInterval(() => {
+      //   console.log(timeLeft)
+      //   if (timeLeft <= 0) {
+      //     clearInterval(timer);
+      //     // Code to end the game when time is up
+      //   } else {
+      //     const minutes = Math.floor(timeLeft / 60);
+      //     const seconds = timeLeft % 60;
+      //     timerElement.innerHTML = `${minutes}:${
+      //       seconds < 10 ? "0" : ""
+      // }${seconds}`;
+      //     timeLeft--;
+      //   }
+      // }, 1000);
+
+  
   }
 
 
 document.getElementById("start").addEventListener("click", function() {
-    startNewGame();
+    // startNewGame();
+    startNewGame()
+
   });
 
   function updateTimer() {
@@ -311,11 +305,40 @@ const scoreDisplay = document.getElementById("punto");
 const leaderboardTable = document.getElementById("leaderboard");
 
 
+function tabla() {
+    let userPoints=[];
+    if(JSON.parse(localStorage.getItem('all_users')) !=null){
+        userPoints=JSON.parse(localStorage.getItem('all_users'))
+      
+    }
+    userPoints.sort((a, b) => b.score - a.score);
+for(let i=0;i<userPoints.length;i++){
+    agregarFila(userPoints[i].name, userPoints[i].score)
+}
+    
+}
 
+function agregarFila(nombre, puntaje) {
+   console.log('k,mjhgfvgthyju')
+    const fila = document.createElement("tr");
+    const celdaNombre = document.createElement("td");
+    const celdaPuntaje = document.createElement("td");
+    celdaNombre.textContent = nombre;
+    celdaPuntaje.textContent = puntaje;
+    fila.appendChild(celdaNombre);
+    fila.appendChild(celdaPuntaje);
+    console.log(leaderboardUsersTable.querySelector("tbody"))
+    leaderboardUsersTable.querySelector("tbody").appendChild(fila);
+
+}
 
 // Función para mostrar el formulario modal
 function showModal() {
+
   modal.style.display = "block";
+  tabla()
+ 
+
 }
 
 // Función para ocultar el formulario modal
@@ -391,30 +414,7 @@ function getLeaderboard() {
 //Función para mostrar tabla de puntuacionesen la interfaz de usuario
 function updateLeaderboard() {
   // Obtener lista de usuarios y puntajes
-  const leaderboard = getLeaderboard();
-  // Limpiar tabla existente
-  leaderboardTable.innerHTML = "";
-  // Crear fila de encabezado
-  const headerRow = document.createElement("tr");
-  const nameHeader = document.createElement("th");
-  nameHeader.textContent = "Name";
-  headerRow.appendChild(nameHeader);
-  const scoreHeader = document.createElement("th");
-  scoreHeader.textContent= "Score";
-  headerRow.appendChild(scoreHeader);
-  leaderboardTable.appendChild(headerRow);
-  // Crear fila para cada usuario
-  for (let i = 0; i < leaderboard.length; i++) {
-    const user = leaderboard[i];
-    const row = document.createElement("tr");
-    const nameCell = document.createElement("td");
-    nameCell.textContent = user.name;
-    row.appendChild(nameCell);
-    const scoreCell = document.createElement("td");
-    scoreCell.textContent = user.score;
-    row.appendChild(scoreCell);
-    leaderboardTable.appendChild(row);
-  }
+tabla()
 }
 
 function addRowToLeaderboard(name, score) {
