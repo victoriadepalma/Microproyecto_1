@@ -393,34 +393,404 @@ body {
 
 
 @media screen and (max-width: 700px) {
-  .cards{
-    height: 350px;
-    width: 350px;
-  }
-  .card .front-view img{
-    width: 17px;
-  }
-  .card .back-view img{
-    max-width: 40px;
-  }
+    .timer-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .timer {
+        font-size: 48px;
+        
+        color: #333;
+      }
+    
+      .timer {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: 'TheGoodMonolith', sans-serif;
+        color: black;
+        border-radius: 50%;
+        border: 5px solid white;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: #E8CCBF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        
+      }
+      #timer {
+       
+        top: 10px;
+        right: 40px;
+        font-size: 15px;
+        font-weight: bold;
+        top: 3%;
+    
+        } 
+
+        .question {
+            font-family: 'TheGoodMonolith', sans-serif;
+            font-size: 12px;
+            font-weight: 200;
+            margin: 10px ;
+            top: 1%;
+            
+            
+          }
+
+          .header-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          }
+          
+          .title{
+            position: absolute;
+            top: 9%;
+            font-weight: 200;
+            font-family: 'Pixel Gaming', sans-serif;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        
+          .puntaje {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E8CCBF;
+            padding: 5px;
+            border-radius: 2px;
+            margin: 10px;
+            font-size: 10px;
+            font-family: 'TheGoodMonolith', sans-serif;;
+            position: absolute;
+            left: 20px;
+            top: 5%;
+          }
+          
+          .puntaje div {
+            margin: 2px;
+          }
+          
+          #score {
+            font-weight: bold;
+           
+          }
+          
+          .punto {
+            font-size: 10px;
+          }
+        
+        .wrapper{
+    
+    position: absolute;
+      padding: 10px;
+      border-radius: 10px;
+      background: #E8CCBF;
+      margin-top: 50px;
+    
+    
+    }
+
+    .cards{
+        height: 300px;
+        width: 300px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+      }
+
+      #start {
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000000;
+        font-family: 'Pixel Gaming', sans-serif;
+        color: #ffffff;
+        font-size: 10px;
+        
+      }
   
 
 }
 
   
 @media screen and (max-width: 530px) {
-  .cards{
-    height: 300px;
-    width: 300px;
-  }
-  .card .front-view img{
-    width: 15px;
-  }
-  .card .back-view img{
-    max-width: 35px;
-  }
-} 
+    .timer-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .timer {
+        font-size: 48px;
+        
+        color: #333;
+      }
+    
+      .timer {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: 'TheGoodMonolith', sans-serif;
+        color: black;
+        border-radius: 50%;
+        border: 5px solid white;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: #E8CCBF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        
+      }
+      #timer {
+       
+        top: 10px;
+        right: 40px;
+        font-size: 15px;
+        font-weight: bold;
+        top: 3%;
+    
+        } 
 
+        .question {
+            font-family: 'TheGoodMonolith', sans-serif;
+            font-size: 12px;
+            font-weight: 200;
+            margin: 10px ;
+            top: 1%;
+            
+            
+          }
+
+          .header-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          }
+          
+          .title{
+            position: absolute;
+            top: 9%;
+            font-weight: 200;
+            font-family: 'Pixel Gaming', sans-serif;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        
+          .puntaje {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E8CCBF;
+            padding: 5px;
+            border-radius: 2px;
+            margin: 10px;
+            font-size: 10px;
+            font-family: 'TheGoodMonolith', sans-serif;;
+            position: absolute;
+            left: 20px;
+            top: 5%;
+          }
+          
+          .puntaje div {
+            margin: 2px;
+          }
+          
+          #score {
+            font-weight: bold;
+           
+          }
+          
+          .punto {
+            font-size: 10px;
+          }
+        
+        .wrapper{
+    
+    position: absolute;
+      padding: 10px;
+      border-radius: 10px;
+      background: #E8CCBF;
+      margin-top: 50px;
+    
+    
+    }
+
+    .cards{
+        height: 300px;
+        width: 300px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+      }
+
+      #start {
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000000;
+        font-family: 'Pixel Gaming', sans-serif;
+        color: #ffffff;
+        font-size: 10px;
+        
+      }
+} 
+@media screen and (max-width: 375px){
+
+    .cards{
+        height: 500px;
+        width: 500px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+      }
+    .timer-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .timer {
+        font-size: 48px;
+        
+        color: #333;
+      }
+    
+      .timer {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: 'TheGoodMonolith', sans-serif;
+        color: black;
+        border-radius: 50%;
+        border: 5px solid white;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: #E8CCBF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        
+      }
+      #timer {
+       
+        top: 10px;
+        right: 20px;
+        font-size: 15px;
+        font-weight: bold;
+        top: 3%;
+    
+        } 
+
+        .question {
+            font-family: 'TheGoodMonolith', sans-serif;
+            font-size: 12px;
+            font-weight: 200;
+            margin: 10px ;
+            top: 1%;
+            
+            
+          }
+
+          .header-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          }
+          
+          .title{
+            position: absolute;
+            top: 9%;
+            font-weight: 200;
+            font-family: 'Pixel Gaming', sans-serif;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        
+          .puntaje {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E8CCBF;
+            padding: 5px;
+            border-radius: 2px;
+            margin: 10px;
+            font-size: 10px;
+            font-family: 'TheGoodMonolith', sans-serif;;
+            position: absolute;
+            left: 20px;
+            top: 5%;
+          }
+          
+          .puntaje div {
+            margin: 2px;
+          }
+          
+          #score {
+            font-weight: bold;
+           
+          }
+          
+          .punto {
+            font-size: 10px;
+          }
+        
+        .wrapper{
+    
+    position: absolute;
+      padding: 10px;
+      border-radius: 10px;
+      background: #E8CCBF;
+      margin-top: 50px;
+    
+    
+    }
+
+    .cards{
+        height: 300px;
+        width: 300px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+      }
+
+      #start {
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000000;
+        font-family: 'Pixel Gaming', sans-serif;
+        color: #ffffff;
+        font-size: 10px;
+        
+      }
+}
 
 /* hacer estos */
 @media (max-width: 768px) {
@@ -466,7 +836,7 @@ body {
         
       }
       #timer {
-        position: fixed;
+       
         top: 10px;
         right: 40px;
         font-size: 15px;
@@ -563,18 +933,136 @@ body {
         font-size: 10px;
         
       }
+    }
 
 
-  @media screen and (max-width: 530px) {
+  @media screen and (max-width: 400px) {
+    .timer-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .timer {
+        font-size: 48px;
+        
+        color: #333;
+      }
+    
+      .timer {
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: 'TheGoodMonolith', sans-serif;
+        color: black;
+        border-radius: 50%;
+        border: 5px solid white;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: #E8CCBF;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        
+      }
+      #timer {
+       
+        top: 10px;
+        right: 40px;
+        font-size: 15px;
+        font-weight: bold;
+        top: 3%;
+    
+        } 
+
+        .question {
+            font-family: 'TheGoodMonolith', sans-serif;
+            font-size: 12px;
+            font-weight: 200;
+            margin: 10px ;
+            top: 1%;
+            
+            
+          }
+
+          .header-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+          }
+          
+          .title{
+            position: absolute;
+            top: 9%;
+            font-weight: 200;
+            font-family: 'Pixel Gaming', sans-serif;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        
+          .puntaje {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E8CCBF;
+            padding: 5px;
+            border-radius: 2px;
+            margin: 10px;
+            font-size: 10px;
+            font-family: 'TheGoodMonolith', sans-serif;;
+            position: absolute;
+            left: 20px;
+            top: 5%;
+          }
+          
+          .puntaje div {
+            margin: 2px;
+          }
+          
+          #score {
+            font-weight: bold;
+           
+          }
+          
+          .punto {
+            font-size: 10px;
+          }
+        
+        .wrapper{
+    
+    position: absolute;
+      padding: 10px;
+      border-radius: 10px;
+      background: #E8CCBF;
+      margin-top: 50px;
+    
+    
+    }
+
     .cards{
-      height: 300px;
-      width: 300px;
-    }
-    .card .front-view img{
-      width: 15px;
-    }
-    .card .back-view img{
-      max-width: 35px;
-    }
-  }
+        height: 300px;
+        width: 300px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+      }
+
+      #start {
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #000000;
+        font-family: 'Pixel Gaming', sans-serif;
+        color: #ffffff;
+        font-size: 10px;
+        
+      }
 }
+
