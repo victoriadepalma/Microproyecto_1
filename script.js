@@ -20,31 +20,7 @@ function clearTimerInterval() {
   clearInterval(timerIntervalId);
 }
 
-// function startGame() {
-//     if (!isPlaying) {
-//       isPlaying = true;
-//       disableDeck = false;
-  
-//       // Remove the event listeners from the cards
-//       cards.forEach(card => card.removeEventListener("click", flipCard));
-  
-//       let timer = setInterval(() => {
-//         if (timeLeft <= 0) {
-//           clearInterval(timer);
-//           disableDeck = true;
-//           // Code to end the game when time is up
-//         } else {
-//           const minutes = Math.floor(timeLeft / 60);
-//           const seconds = timeLeft % 60;
-//           timerElement.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-//           timeLeft--;
-//         }
-//       }, 1000);
-  
-//       // Add the event listeners to the cards
-//      cards.forEach(card => card.addEventListener("click", flipCard));
-//     }
-//   }
+
 
 function startGame() {
     if (!isPlaying) {
@@ -99,20 +75,6 @@ function startGame() {
   });
 
 
-
-// function flipCard({target: clickedCard}) {
-//     if(cardOne !== clickedCard && !disableDeck) {
-//         clickedCard.classList.add("flip");
-//         if(!cardOne) {
-//             return cardOne = clickedCard;
-//         }
-//         cardTwo = clickedCard;
-//         disableDeck = true;
-//         let cardOneImg = cardOne.querySelector(".back-view img").src,
-//         cardTwoImg = cardTwo.querySelector(".back-view img").src;
-//         matchCards(cardOneImg, cardTwoImg);
-//     }
-// }
 
 function flipCard({target: clickedCard}) {
     if (isPlaying && cardOne !== clickedCard && !disableDeck) {
