@@ -25,11 +25,13 @@ function clearTimerInterval() {
 
 function startGame() {
     if (!isPlaying) {
+        console.log('entre')
       isPlaying = true;
       disableDeck = false;
       matched = 0;
       timeLeft = timeLimit; // Reset the time left to the time limit
   
+
       // Remove the event listeners from the cards
       cards.forEach((card) => card.removeEventListener("click", flipCard));
   
@@ -65,6 +67,7 @@ function startGame() {
 
 
   startButton.addEventListener('click', () => {
+    console.log('kmjhgfdxcgvhbjnk')
     startButton.classList.add('clicked');
     // Set up the game state
     shuffleCard();
@@ -115,6 +118,7 @@ function flipCard({target: clickedCard}) {
 //     }, 1200);
 // }
 
+
 function matchCards(img1, img2) {
     if (img1 === img2) {
       matched++;
@@ -125,13 +129,14 @@ function matchCards(img1, img2) {
         document.getElementById('punto').textContent = score; // Display the score to the user
         console.log(`Your score is: ${score}`); // Output the score to the console for debugging purposes
         disableDeck = true; // Disable further card flips
+        updateScore(score)
       }
       cardOne.removeEventListener("click", flipCard);
       cardTwo.removeEventListener("click", flipCard);
       cardOne = cardTwo = "";
       return disableDeck = false;
     }
-    setTimeout(() => {
+    setTimeout(() => { //no hubo match
       cardOne.classList.add("shake");
       cardTwo.classList.add("shake");
     }, 400);
@@ -156,7 +161,7 @@ function shuffleCard() {
         card.addEventListener("click", flipCard);
     });
 }
-shuffleCard();
+shuffleCard(); //suffle ante de iniciar
     
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
@@ -199,7 +204,36 @@ function resetScoreAndTime() {
     // Update the score and time displays on the page
     document.getElementById("punto").textContent = score;
     document.getElementById("timer").textContent = formatTime(time);
+
+    //newnew
+    
+     // Reset the score display
+     document.getElementById("punto").textContent = "0";
+  
+     // Reset the timer display
+     const minutes = Math.floor(timeLeft / 60);
+     const seconds = timeLeft % 60;
+     timerElement.innerHTML = `${minutes}:${
+       seconds < 10 ? "0" : ""
+     }${seconds}`;
+ 
+     // Start the timer
+     timer = setInterval(() => {
+       if (timeLeft <= 0) {
+         clearInterval(timer);
+         // Code to end the game when time is up
+       } else {
+         const minutes = Math.floor(timeLeft / 60);
+         const seconds = timeLeft % 60;
+         timerElement.innerHTML = `${minutes}:${
+           seconds < 10 ? "0" : ""
+     }${seconds}`;
+         timeLeft--;
+       }
+     }, 1000);
   }
+
+
   function startNewGame() {
     // Clear the timer interval
    
@@ -211,6 +245,7 @@ function resetScoreAndTime() {
     resetCards();
     // Hide the start game button
     document.getElementById("start").classList.add("hide");
+    
   
     // Set the time limit and update the timer display
     time = timeLimit;
@@ -249,23 +284,23 @@ document.getElementById("start").addEventListener("click", function() {
 
 
 
-//   function endGame() {
-//     clearInterval(timer);
-//     disableDeck = true;
-//     isPlaying = false;
-//     const score = parseInt(document.getElementById("punto").textContent);
-//     const username = "John Doe"; // Reemplazar por el nombre del usuario ingresado por el usuario
-//     const user = { name: username, score: score };
-//     localStorage.setItem(username, JSON.stringify(user));
-//     showScores();
-// CLAUDE lo borro }
+  function endGame() {
+    clearInterval(timer);
+    disableDeck = true;
+    isPlaying = false;
+    const score = parseInt(document.getElementById("punto").textContent);
+    const username = "John Doe"; // Reemplazar por el nombre del usuario ingresado por el usuario
+    const user = { name: username, score: score };
+    localStorage.setItem(username, JSON.stringify(user));
+    showScores();
+  }
 
-  let currentScore;
+//   let currentScore;
 
-function endGame() {
-  currentScore = parseInt(document.getElementById("punto").textContent);
-  document.getElementById("modal").style.display = "block";
-}
+// function endGame() {
+//   currentScore = parseInt(document.getElementById("punto").textContent);
+//   document.getElementById("modal").style.display = "block";
+// }
 
 
  // Obtener elementos del DOM
@@ -274,10 +309,6 @@ const form = document.querySelector("form");
 const usernameInput = document.getElementById("username");
 const scoreDisplay = document.getElementById("punto");
 const leaderboardTable = document.getElementById("leaderboard");
-
-
-
-
 
 
 
@@ -298,26 +329,52 @@ form.addEventListener("submit", (event) => {
   // Obtener nombre deusuario
   const username = usernameInput.value;
   // Almacenar nombre de usuario y puntaje inicial en LocalStorage
-  const user = { name: username, score: currentScore }; //lo que cambie de 0
-  localStorage.setItem(username, JSON.stringify(user));
+  const user = { name: username, score: score }; //lo que cambie de 0
+  let auxStorage=[]
+  if(localStorage.getItem('all_users') != null){
+    auxStorage=JSON.parse(localStorage.getItem('all_users'))
+    auxStorage.push(user)
+  }else{
+    console.log('njhnxhsbxyhsuybyhsb')
+
+    auxStorage.push(user)
+
+  }
+  console.log(auxStorage)
+
+  localStorage.setItem('all_users', JSON.stringify(auxStorage));
+
+  localStorage.setItem('current_user',username)
   // Ocultar formulario modal y comenzar juego
   hideModal();
   // ...
 });
 
-// Función para actualizar puntaje del usuario en LocalStorage
-function updateScore(username, newScore) {
+
+
+//Función para actualizar puntaje del usuario en LocalStorage
+function updateScore(newScore) {
+    console.log('kijhugyftdrfghjkn', localStorage.getItem('all_users'), localStorage.getItem('current_user'))
   // Obtener objeto JSON almacenado en LocalStorage
-  const userData = JSON.parse(localStorage.getItem(username));
-  // Actualizar puntaje del usuario
-  userData.score = newScore;
-  // Convertir objeto JSON actualizado en cadena y almacenarlo en LocalStorage
-  localStorage.setItem(username, JSON.stringify(userData));
-  // Actualizar tabla de puntuaciones
-  updateLeaderboard();
+  if(localStorage.getItem('all_users') != null && localStorage.getItem('current_user') != null ){
+        // Obtener objeto JSON almacenado en LocalStorage
+   
+        const userList = JSON.parse(localStorage.getItem('all_users'));
+
+        if(userList.some(user => user.name === localStorage.getItem('current_user'))){
+      // userList.localStorage.getItem('current_user')=newScore
+      const index= userList.findIndex((item => item.name == localStorage.getItem('current_user')));
+      const user=localStorage.getItem('current_user')
+          userList[index].score=newScore
+          localStorage.setItem('all_users',JSON.stringify(userList))
+        }
+    
+//   // Actualizar tabla de puntuaciones
+//   updateLeaderboard();
+  }
 }
 
-// Función para obtener lista de usuarios y puntajes almacenados en LocalStorage y ordenarla por puntaje descendente
+//Función para obtener lista de usuarios y puntajes almacenados en LocalStorage y ordenarla por puntaje descendente
 function getLeaderboard() {
   const leaderboard = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -331,7 +388,7 @@ function getLeaderboard() {
   return leaderboard;
 }
 
-// Función para mostrar tabla de puntuacionesen la interfaz de usuario
+//Función para mostrar tabla de puntuacionesen la interfaz de usuario
 function updateLeaderboard() {
   // Obtener lista de usuarios y puntajes
   const leaderboard = getLeaderboard();
@@ -380,6 +437,8 @@ function showScores() {
       if (user) {
         scores.push(user);
       }
+
+      console.log("holaaaa")
     }
     scores.sort((a, b) => b.score - a.score);
     const tableBody = document.getElementById("scores-body");
@@ -408,29 +467,7 @@ function showScores() {
   }
 
 
-//   CLAUDE HIZO ESTO
-  function saveScore() {
-    const username = document.getElementById("username").value; 
-    localStorage.setItem(username, JSON.stringify({ 
-      name: username, 
-      score: currentScore  
-    }));
-  }
-  document.getElementById("submit").addEventListener("click", function() {
-    saveScore();
-    showScores();
-  });
 
-  function showScores() {
-    const scores = Object.values(localStorage);
-    scores.forEach(score => {
-      // agregar fila a tabla con datos de score.name y score.score
-    });
-  }
-
-// Mostrar el formulario modal al cargar la página
 showModal();
-
-// Llamar a la función para mostrar la tabla de puntuaciones al cargar la página
 updateLeaderboard();
 
