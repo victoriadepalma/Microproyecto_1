@@ -22,7 +22,7 @@
   font-size: 5rem;
   font-weight: bold;
   font-family: 'TheGoodMonolith', sans-serif;
-  color: #333;
+  color: black;
   border-radius: 50%;
   border: 5px solid white;
   width: 200px;
@@ -33,6 +33,7 @@
   box-sizing: border-box;
   background-color: #E8CCBF;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  
 }
 
 .timer::before {
@@ -46,9 +47,11 @@
 #timer {
     position: fixed;
     top: 10px;
-    right: 10px;
-    font-size: 2em;
+    right: 40px;
+    font-size: 45px;
     font-weight: bold;
+    top: 3%;
+
     } 
 
 
@@ -69,7 +72,7 @@ body{
     font-size: 20px;
     font-style: italic;
     
-  } */
+  }  */
 
 
   .question{
@@ -138,14 +141,14 @@ position: absolute;
     margin: 10px 0;
   }
   
-  .puntaje {
+  /* .puntaje {
     font-family: 'Hind', sans-serif;
     font-size: 20px;
    font-style: italic;
     color: #8B1E3F;
     margin: 0;
     text-align: center;
-  }
+  } */
 
 
 .cards, .card, .view{
@@ -202,7 +205,7 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #000000;
-    font-family: 'TheGoodMonolith', sans-serif;
+    font-family: 'Pixel Gaming', sans-serif;
     color: #ffffff;
     font-size: 20px;
     
@@ -272,16 +275,45 @@ body {
     margin: 10px 0;
   }
   
-  .puntaje {
+  /* .puntaje {
     font-family: 'Hind', sans-serif;
     font-size: 20px;
     font-style: italic;
     color: #8B1E3F;
     margin: 0;
     text-align: center;
-  } 
+  }  */
 
-
+  .cuadroPuntaje {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E8CCBF;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 30px;
+    font-family: 'TheGoodMonolith', sans-serif;;
+    position: absolute;
+    left: 60px;
+    top: 5%;
+  }
+  
+  .cuadroPuntaje div {
+    margin: 10px;
+    
+    
+  }
+  
+  #score {
+    font-weight: bold;
+    
+  }
+  
+  .punto {
+    
+    font-size: 40px;
+  }
 
   
 @keyframes shake {
@@ -342,6 +374,8 @@ body {
     max-width: 40px;
   }
 }
+
+  
 @media screen and (max-width: 530px) {
   .cards{
     height: 300px;
@@ -354,3 +388,24 @@ body {
     max-width: 35px;
   }
 }
+
+/* Styles for screens larger than 768px */
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  /* Stylesfor screens smaller than 768px */
+  @media screen and (max-width: 768px) {
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Styles for screens smaller than 480px */
+  @media screen and (max-width: 480px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
