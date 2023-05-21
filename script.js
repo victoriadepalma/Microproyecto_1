@@ -44,21 +44,7 @@ function startGame() {
       timerElement.innerHTML = `${minutes}:${
         seconds < 10 ? "0" : ""
       }${seconds}`;
-  
-      // Start the timer
-      timer = setInterval(() => {
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          // Code to end the game when time is up
-        } else {
-          const minutes = Math.floor(timeLeft / 60);
-          const seconds = timeLeft % 60;
-          timerElement.innerHTML = `${minutes}:${
-            seconds < 10 ? "0" : ""
-      }${seconds}`;
-          timeLeft--;
-        }
-      }, 1000);
+
   
       // Add the event listeners to the cards
       cards.forEach((card) => card.addEventListener("click", flipCard));
@@ -234,22 +220,22 @@ function resetScoreAndTime() {
   
 
   
-      // // Start the timer
-      // console.log('mkcdmkmcmdkmcdk',timeLimit)
-      // timer = setInterval(() => {
-      //   console.log(timeLeft)
-      //   if (timeLeft <= 0) {
-      //     clearInterval(timer);
-      //     // Code to end the game when time is up
-      //   } else {
-      //     const minutes = Math.floor(timeLeft / 60);
-      //     const seconds = timeLeft % 60;
-      //     timerElement.innerHTML = `${minutes}:${
-      //       seconds < 10 ? "0" : ""
-      // }${seconds}`;
-      //     timeLeft--;
-      //   }
-      // }, 1000);
+      // Start the timer
+      console.log('mkcdmkmcmdkmcdk',timeLimit)
+      timer = setInterval(() => {
+        console.log(timeLeft)
+        if (timeLeft < 0) {
+          clearInterval(timer);
+          // Code to end the game when time is up
+        } else {
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          timerElement.innerHTML = `${minutes}:${
+            seconds < 10 ? "0" : ""
+      }${seconds}`;
+          timeLeft--;
+        }
+      }, 1000);
 
   
   }
@@ -311,15 +297,18 @@ function tabla() {
         userPoints=JSON.parse(localStorage.getItem('all_users'))
       
     }
+  
     userPoints.sort((a, b) => b.score - a.score);
+    console.log(userPoints.length)
 for(let i=0;i<userPoints.length;i++){
+
     agregarFila(userPoints[i].name, userPoints[i].score)
 }
     
 }
 
 function agregarFila(nombre, puntaje) {
-   console.log('k,mjhgfvgthyju')
+
     const fila = document.createElement("tr");
     const celdaNombre = document.createElement("td");
     const celdaPuntaje = document.createElement("td");
@@ -336,6 +325,7 @@ function agregarFila(nombre, puntaje) {
 function showModal() {
 
   modal.style.display = "block";
+
   tabla()
  
 

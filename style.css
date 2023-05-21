@@ -106,7 +106,7 @@ position: absolute;
 
   
 .title{
-    position: absolute;
+    /* position: absolute; */
     top: 0%;
     font-weight: 200;
     font-family: 'Pixel Gaming', sans-serif;
@@ -114,7 +114,6 @@ position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 
@@ -391,9 +390,7 @@ body {
 
 
 
-
-
-@media screen and (max-width: 700px) {
+  @media screen and (max-width: 700px) {
     .timer-container {
         display: flex;
         justify-content: center;
@@ -1129,14 +1126,14 @@ body {
         
       }
       #timer {
-       
-        top: 10px;
-        right: 40px;
-        font-size: 15px;
-        font-weight: bold;
-        top: 3%;
-    
-        } 
+       top: 10px;
+       right: 40px;
+       font-size: 20px;
+       font-weight: bold;
+       top: 3%;
+       width: 100px;
+       height: 100px;
+       } 
 
         .question {
           
@@ -1186,11 +1183,12 @@ body {
           
           .puntaje div {
             margin: 2px;
+            font-size: 20px;
           }
           
           #score {
             font-weight: bold;
-           
+            font-size: 20px;
           }
           
           .punto {
@@ -1209,11 +1207,10 @@ body {
     }
 
     .cards{
-        height: 300px;
-        width: 300px;
+        height: 70vw;
+        width: 70vw;
         flex-wrap: wrap;
         justify-content: space-between;
-        
       }
 
       #start {
@@ -1281,14 +1278,21 @@ body {
         
       }
       #timer {
-       
-        top: 10px;
-        right: 40px;
-        font-size: 15px;
-        font-weight: bold;
-        top: 3%;
-    
-        } 
+       top: 10px;
+       right: 5%;
+       font-size: 15px;
+       font-weight: bold;
+       top: 1%;
+       width: 60px;
+       height: 60px;
+       } 
+
+        .puntaje{
+            left: 3%;
+            top: 1%;
+        }
+
+        
 
         .question {
           
