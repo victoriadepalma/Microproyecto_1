@@ -3,8 +3,8 @@ let matched = 0;
 let cardOne;
 let cardTwo;
 let disableDeck = true;
-
 let isPlaying = false;
+let username = "";
 
 const timeLimit = 180;
 
@@ -12,6 +12,7 @@ const timerElement = document.getElementById('timer');
 let timeLeft = timeLimit;
 
 const startButton = document.getElementById('start');
+const submitButton = document.getElementById("submit")
 
 let timer;
 let timerIntervalId;
@@ -176,6 +177,17 @@ startButton.addEventListener('mouseout', () => {
 });
 
 
+submitButton.addEventListener('mouseover', () => {
+    submitButton.style.backgroundColor = "white";
+    submitButton.style.color = '';
+    
+  });
+  
+  submitButton.addEventListener('mouseout', () => {
+    submitButton.style.backgroundColor = 'orange';
+    
+  });
+
 // Define the initial score and time values
 let score = 0;
 let time = 0;
@@ -228,3 +240,197 @@ document.getElementById("start").addEventListener("click", function() {
       endGame();
     }
   }
+
+
+
+
+
+
+
+
+
+//   function endGame() {
+//     clearInterval(timer);
+//     disableDeck = true;
+//     isPlaying = false;
+//     const score = parseInt(document.getElementById("punto").textContent);
+//     const username = "John Doe"; // Reemplazar por el nombre del usuario ingresado por el usuario
+//     const user = { name: username, score: score };
+//     localStorage.setItem(username, JSON.stringify(user));
+//     showScores();
+// CLAUDE lo borro }
+
+  let currentScore;
+
+function endGame() {
+  currentScore = parseInt(document.getElementById("punto").textContent);
+  document.getElementById("modal").style.display = "block";
+}
+
+
+ // Obtener elementos del DOM
+const modal = document.getElementById("modal"); 
+const form = document.querySelector("form");
+const usernameInput = document.getElementById("username");
+const scoreDisplay = document.getElementById("punto");
+const leaderboardTable = document.getElementById("leaderboard");
+
+
+
+
+
+
+
+
+// Función para mostrar el formulario modal
+function showModal() {
+  modal.style.display = "block";
+}
+
+// Función para ocultar el formulario modal
+function hideModal() {
+  modal.style.display = "none";
+}
+
+// Agregar evento de submit al formulario
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  // Obtener nombre deusuario
+  const username = usernameInput.value;
+  // Almacenar nombre de usuario y puntaje inicial en LocalStorage
+  const user = { name: username, score: currentScore }; //lo que cambie de 0
+  localStorage.setItem(username, JSON.stringify(user));
+  // Ocultar formulario modal y comenzar juego
+  hideModal();
+  // ...
+});
+
+// Función para actualizar puntaje del usuario en LocalStorage
+function updateScore(username, newScore) {
+  // Obtener objeto JSON almacenado en LocalStorage
+  const userData = JSON.parse(localStorage.getItem(username));
+  // Actualizar puntaje del usuario
+  userData.score = newScore;
+  // Convertir objeto JSON actualizado en cadena y almacenarlo en LocalStorage
+  localStorage.setItem(username, JSON.stringify(userData));
+  // Actualizar tabla de puntuaciones
+  updateLeaderboard();
+}
+
+// Función para obtener lista de usuarios y puntajes almacenados en LocalStorage y ordenarla por puntaje descendente
+function getLeaderboard() {
+  const leaderboard = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const userData = JSON.parse(localStorage.getItem(key));
+    if (userData && userData.score) {
+      leaderboard.push({ name: userData.name, score: userData.score });
+    }
+  }
+  leaderboard.sort((a, b) => b.score - a.score);
+  return leaderboard;
+}
+
+// Función para mostrar tabla de puntuacionesen la interfaz de usuario
+function updateLeaderboard() {
+  // Obtener lista de usuarios y puntajes
+  const leaderboard = getLeaderboard();
+  // Limpiar tabla existente
+  leaderboardTable.innerHTML = "";
+  // Crear fila de encabezado
+  const headerRow = document.createElement("tr");
+  const nameHeader = document.createElement("th");
+  nameHeader.textContent = "Name";
+  headerRow.appendChild(nameHeader);
+  const scoreHeader = document.createElement("th");
+  scoreHeader.textContent= "Score";
+  headerRow.appendChild(scoreHeader);
+  leaderboardTable.appendChild(headerRow);
+  // Crear fila para cada usuario
+  for (let i = 0; i < leaderboard.length; i++) {
+    const user = leaderboard[i];
+    const row = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    nameCell.textContent = user.name;
+    row.appendChild(nameCell);
+    const scoreCell = document.createElement("td");
+    scoreCell.textContent = user.score;
+    row.appendChild(scoreCell);
+    leaderboardTable.appendChild(row);
+  }
+}
+
+function addRowToLeaderboard(name, score) {
+    // Obtener el cuerpo de la tabla
+    var tbody = document.querySelector("#leaderboard tbody");
+  
+    // Crear una nueva fila de tabla
+    var newRow = document.createElement("tr");
+  
+    // Crear las celdas de la fila y agregar el contenido
+    var nameCell = document.createElement("td");
+    nameCell.textContent = name;
+}
+
+function showScores() {
+    const scores = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const user = JSON.parse(localStorage.getItem(key));
+      if (user) {
+        scores.push(user);
+      }
+    }
+    scores.sort((a, b) => b.score - a.score);
+    const tableBody = document.getElementById("scores-body");
+    tableBody.innerHTML = "";
+    for (const user of scores) {
+      const row = document.createElement("tr");
+      const nameCell = document.createElement("td");
+      nameCell.textContent = user.name;
+      const scoreCell = document.createElement("td");
+      scoreCell.textContent = user.score;
+      row.appendChild(nameCell);
+      row.appendChild(scoreCell);
+      tableBody.appendChild(row);
+    }
+    const modal = document.getElementById("modal");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
+
+
+//   CLAUDE HIZO ESTO
+  function saveScore() {
+    const username = document.getElementById("username").value; 
+    localStorage.setItem(username, JSON.stringify({ 
+      name: username, 
+      score: currentScore  
+    }));
+  }
+  document.getElementById("submit").addEventListener("click", function() {
+    saveScore();
+    showScores();
+  });
+
+  function showScores() {
+    const scores = Object.values(localStorage);
+    scores.forEach(score => {
+      // agregar fila a tabla con datos de score.name y score.score
+    });
+  }
+
+// Mostrar el formulario modal al cargar la página
+showModal();
+
+// Llamar a la función para mostrar la tabla de puntuaciones al cargar la página
+updateLeaderboard();
+
